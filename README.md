@@ -1,3 +1,3 @@
 # API Base
 Application Programming Interface
-![alt tag](https://s3.amazonaws.com/robi-bucket/images/blue-falcon.jpg)
+![alt tag](http://developer.quantcast.com/files/API_PAGE_CLOUD_-_crop.png)
