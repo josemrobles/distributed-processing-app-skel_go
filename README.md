@@ -1,3 +1,3 @@
-# API Base
-Application Programming Interface
-![alt tag](http://developer.quantcast.com/files/API_PAGE_CLOUD_-_crop.png)
+# API Base using Go and Rabbitmq
+A skel app which takes a json payload and published messages to a rabbitmq server. 
+
