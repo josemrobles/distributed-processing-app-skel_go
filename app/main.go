@@ -10,8 +10,8 @@ import (
 )
 
 var (
-	port                     = flag.String("port", "8080", "API Port")
-	uri                      = flag.String("uri", "amqp://guest:guest@192.168.99.100:5672/", "AMQP URI")
+	port = flag.String("port", "8080", "API Port")
+	uri = flag.String("uri", "amqp://guest:guest@192.168.99.100:5672/", "AMQP URI")
 	rmqConn *amqp.Connection = nil
 )
 
