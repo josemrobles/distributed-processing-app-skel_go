@@ -1,4 +1,4 @@
-FROM golang:1.4
+FROM golang:1.6
 
 WORKDIR /go/src/github.com/josemrobles/data-ingestion-poc/api
 EXPOSE 1337

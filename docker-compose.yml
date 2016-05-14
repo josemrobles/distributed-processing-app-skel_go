@@ -1,5 +1,4 @@
 rabbitmq:
-  container_name: "MessageQueueServer"
   image: rabbitmq:3-management
   ports:
     - "9002:15672"

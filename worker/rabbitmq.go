@@ -96,8 +96,7 @@ func consume(conn *amqp.Connection, exchange, queue, consumerTag string) error {
 						for d := range msgs {
 							d.Ack(false)
 
-							// Dropped in here for now but need to push d.Body to a channel
-							err = indexData(string(d.Body))
+							log.Println(string(d.Body))
 						}
 					}()
 					log.Printf(" [*] Waiting for messages. To exit press CTRL+C")
