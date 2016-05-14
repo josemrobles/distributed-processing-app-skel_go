@@ -1,0 +1,7 @@
+#!/bin/bash
+i="0"
+while [ $i -lt 100 ]
+	do
+		curl -vX POST -d @payload.json "http://192.168.99.100:1337/api/v1/"
+		i=$[$i+1]
+done

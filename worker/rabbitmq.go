@@ -16,7 +16,7 @@ func connect(amqpURI string) (ch *amqp.Connection) {
 	}
 }
 
-func consume(conn *amqp.Connection, exchange, queue, consumerTag string) error {
+func consume(conn *amqp.Connection, exchange, queue, consumerTag string, cb chan string) error {
 
 	ch, err := conn.Channel()
 	if err != nil {
@@ -96,7 +96,7 @@ func consume(conn *amqp.Connection, exchange, queue, consumerTag string) error {
 						for d := range msgs {
 							d.Ack(false)
 
-							log.Println(string(d.Body))
+							cb <- string(d.Body)
 						}
 					}()
 					log.Printf(" [*] Waiting for messages. To exit press CTRL+C")

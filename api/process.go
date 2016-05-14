@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -16,6 +17,9 @@ func doWork(w http.ResponseWriter, r *http.Request) {
 		err := publish(rmqConn, os.Getenv("MESSAGEQUEUESERVER_EXCHANGE"), os.Getenv("MESSAGEQUEUESERVER_QUEUE"), string([]byte(b)), true)
 		if err != nil {
 			log.Printf("ERROR: Could not publish message %s", err)
+		} else {
+			w.Header().Set("Content-Type", "application/json")
+			fmt.Fprintf(w, "SOME SORT OF CONFIRMATIONN HERE")
 		}
 	}
 }
