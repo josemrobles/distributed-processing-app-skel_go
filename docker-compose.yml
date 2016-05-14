@@ -5,9 +5,14 @@ rabbitmq:
     - "9002:15672"
     - "5672:5672"
 api:
-  build: app/.
-  container_name: "ApiServer"
+  build: api/.
+  env_file: .env
   links:
     - rabbitmq
   ports:
-    - "8080:8080"
+    - "1337:1337"
+worker:
+  build: worker/.
+  env_file: .env
+  links:
+    - rabbitmq
