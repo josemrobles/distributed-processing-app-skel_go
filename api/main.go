@@ -21,5 +21,5 @@ func init() {
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/api/v1/", doWork).Methods("POST")
-	log.Fatal(http.ListenAndServe(":1337", router))
+	log.Fatal(http.ListenAndServe(":80", router))
 }
