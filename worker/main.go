@@ -20,7 +20,7 @@ func init() {
 }
 
 func main() {
-	err := consume(rmqConn, os.Getenv("MESSAGEQUEUESERVER_EXCHANGE"), os.Getenv("MESSAGEQUEUESERVER_QUEUE"), "W1", workQueue)
+	err := consume(rmqConn, os.Getenv("RMQ_EXCHANGE"), os.Getenv("RMQ_QUEUE"), "W1", workQueue)
 	if err != nil {
 		log.Printf("ERROR: %q", err)
 	}

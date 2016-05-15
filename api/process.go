@@ -14,7 +14,7 @@ func doWork(w http.ResponseWriter, r *http.Request) {
 		log.Printf("ERROR: Could not read POST data - %s", err)
 		w.WriteHeader(500)
 	} else {
-		err := publish(rmqConn, os.Getenv("MESSAGEQUEUESERVER_EXCHANGE"), os.Getenv("MESSAGEQUEUESERVER_QUEUE"), string([]byte(b)), true)
+		err := publish(rmqConn, os.Getenv("RMQ_EXCHANGE"), os.Getenv("RMQ_QUEUE"), string([]byte(b)), true)
 		if err != nil {
 			log.Printf("ERROR: Could not publish message %s", err)
 		} else {
