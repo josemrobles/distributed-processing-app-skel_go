@@ -11,7 +11,7 @@ import (
 var (
 	rmqConn      *amqp.Connection = nil
 	payloadQueue                  = make(chan string)
-	rmqServer                     = "amqp://guest:guest@" + os.Getenv("RABBITMQ_PORT_5672_TCP_ADDR") + ":" + os.Getenv("RABBITMQ_PORT_5672_TCP_PORT")
+	rmqServer                     = "amqp://guest:guest@" + os.Getenv("RABBITMQ_SERVER") + ":5672"
 )
 
 func init() {
