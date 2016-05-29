@@ -1,0 +1,15 @@
+#!/bin/bash -ex
+i=$1
+echo $i
+pwd=`pwd`
+echo $pwd
+
+if [ ! -d _packaged ]; then
+	mkdir _packaged
+fi
+if [ -d _packaged/$i ]; then
+	rm -r _packaged/$i
+fi
+mkdir _packaged/$i
+(cd $i; berks package ${pwd}/_packaged/$i/package.tar.gz )
+(cd ${pwd}/_packaged/$i && tar -zxvf package.tar.gz && rm package.tar.gz )

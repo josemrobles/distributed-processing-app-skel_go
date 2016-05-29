@@ -1,0 +1,12 @@
+.vagrant
+/cookbooks
+_packaged
+
+# Bundler
+bin/*
+.bundle/*
+
+.kitchen/
+.kitchen.local.yml
+
+*.swp

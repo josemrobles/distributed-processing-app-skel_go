@@ -1,0 +1,9 @@
+DEPENDENCIES
+  dps_app
+    path: .
+    metadata: true
+
+GRAPH
+  apt (1.0.0)
+  dps_app (0.1.0)
+    apt (~> 1.0.0)
