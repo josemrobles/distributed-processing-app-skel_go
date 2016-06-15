@@ -1,4 +1,5 @@
 #!/bin/bash
+# rm -fr _packaged/ && _bin/chef_client_remote robi-test queue dps_app dps_app::databag_test
 
 usage="_bin/chef-client-remote <stack name>  <layer name> <cookbook> <recipe>..."
 
