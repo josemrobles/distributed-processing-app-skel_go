@@ -2,7 +2,7 @@
 #!/bin/bash -e
 cookbook_name=$1
 namespace="$2"
-location="$2"
+location="$3"
 if [ "$1" == "" ]
 then
 	echo "missing cookbook name as first argument"
