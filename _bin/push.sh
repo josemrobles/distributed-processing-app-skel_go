@@ -15,7 +15,7 @@ else
 fi
 echo $destination
 (
-cd $cookbook_name
+cd ../_cookbooks
 if [ -d ../_tmp/ ]; then
 	targz="../_tmp/$cookbook_name.tar.gz"
 else
