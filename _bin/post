@@ -1,7 +1,24 @@
 #!/bin/bash
+
+usage="_bin/post <api address>  <number of posts>"
+
+ADDRESS=$1
+if [ "" == "$ADDRESS" ]; then
+	>&2 echo "Missing api server address as first argument"
+	echo $usage
+	exit 1
+fi
+
+NUMPOSTS=$2
+if [ "" == "$NUMPOSTS" ]; then
+	>&2 echo "Missing number of posts as second argument"
+	echo $usage
+	exit 1
+fi
+
 i="0"
-while [ $i -lt 100 ]
+while [ $i -lt $NUMPOSTS ]
 	do
-		curl -vX POST -d @payload.json "http://192.168.99.100:1337/api/v1/"
+		curl -vX POST -d @payload.json "$ADDRESS"
 		i=$[$i+1]
 done
