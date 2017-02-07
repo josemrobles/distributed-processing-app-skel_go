@@ -1,27 +1,25 @@
 package main
 
 import (
-	"github.com/streadway/amqp"
-	"log"
-	"os"
+	"github.com/josemrobles/conejo"
 )
 
 var (
-	rmqConn   *amqp.Connection = nil
-	workQueue                  = make(chan string)
-	rmqServer                  = "amqp://guest:guest@" + os.Getenv("RABBITMQ_SERVER") + ":5672"
+	rmq       = conejo.Connect("amqp://guest:guest@localhost:5672")
+	queue     = conejo.Queue{Name: "someQueue", Durable: false, Delete: false, Exclusive: false, NoWait: false}
+	exchange  = conejo.Exchange{Name: "someExchange", Type: "topic", Durable: true, AutoDeleted: false, Internal: false, NoWait: false}
+	workQueue = make(chan string)
 )
 
 func init() {
-	rmqConn = connect(rmqServer)
 	for i := 0; i < 4; i++ {
 		go asyncProcessor(workQueue)
 	}
 }
 
 func main() {
-	err := consume(rmqConn, os.Getenv("RMQ_EXCHANGE"), os.Getenv("RMQ_QUEUE"), "W1", workQueue)
+	err := conejo.Consume(rmq, queue, exchange, "W1", workQueue)
 	if err != nil {
-		log.Printf("ERROR: %q", err)
+		print("ERROR: %q", err)
 	}
 }

@@ -2,21 +2,17 @@ package main
 
 import (
 	"github.com/gorilla/mux"
-	"github.com/streadway/amqp"
+	"github.com/josemrobles/conejo"
 	"log"
 	"net/http"
 	"os"
 )
 
 var (
-	rmqConn      *amqp.Connection = nil
-	payloadQueue                  = make(chan string)
-	rmqServer                     = "amqp://guest:guest@" + os.Getenv("RABBITMQ_SERVER") + ":5672"
+	rmq      = conejo.Connect("amqp://guest:guest@localhost:5672")
+	queue    = conejo.Queue{Name: "someQueue", Durable: false, Delete: false, Exclusive: false, NoWait: false}
+	exchange = conejo.Exchange{Name: "someExchange", Type: "topic", Durable: true, AutoDeleted: false, Internal: false, NoWait: false}
 )
-
-func init() {
-	rmqConn = connect(rmqServer)
-}
 
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
